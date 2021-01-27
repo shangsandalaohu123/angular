@@ -567,7 +567,7 @@ runInEachFileSystem(() => {
             entryPoints: {'./default-level-entry-point': {}},
           };
         });
-        afterEach(() => DEFAULT_NGCC_CONFIG.packages = JSON.parse(originalDefaultConfig));
+        afterEach(() => DEFAULT_NGCC_CONFIG.packages = JSON.parse(originalDefaultConfig) as any);
 
         it('should return configuration for a package found in the default config', () => {
           const readFileSpy = spyOn(fs, 'readFile').and.callThrough();

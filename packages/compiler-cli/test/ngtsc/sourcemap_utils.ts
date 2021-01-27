@@ -72,7 +72,7 @@ export function getMappedSegments(
   const mappings: MappingItem[] = [];
 
   const mapContents = env.getContents(sourceMapFileName);
-  const sourceMapConsumer = new SourceMapConsumer(JSON.parse(mapContents));
+  const sourceMapConsumer = new SourceMapConsumer(JSON.parse(mapContents) as any);
   sourceMapConsumer.eachMapping(item => {
     if (!sources.has(item.source)) {
       sources.set(item.source, new TestSourceFile(item.source, env.getContents(item.source)));

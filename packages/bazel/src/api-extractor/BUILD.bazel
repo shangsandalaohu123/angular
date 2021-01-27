@@ -23,6 +23,7 @@ nodejs_binary(
         "@npm//@bazel/typescript",
         "@npm//@microsoft/api-extractor",
     ],
+    templated_args = ["--bazel_patch_module_resolver"],
     entry_point = ":index.ts",
     visibility = ["//visibility:public"],
 )

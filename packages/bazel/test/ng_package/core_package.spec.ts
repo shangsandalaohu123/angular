@@ -59,7 +59,7 @@ describe('@angular/core ng_package', () => {
 
       it('should contain metadata for ng update', () => {
         expect(shx.cat(packageJson)).not.toContain('NG_UPDATE_PACKAGE_GROUP');
-        expect(JSON.parse(shx.cat(packageJson))['ng-update']['packageGroup'])
+        expect((JSON.parse(shx.cat(packageJson)) as any)['ng-update']['packageGroup'])
             .toContain('@angular/core');
       });
     });

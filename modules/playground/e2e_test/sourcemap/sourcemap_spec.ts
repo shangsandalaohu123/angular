@@ -42,7 +42,7 @@ describe('sourcemaps', function() {
       const sourceMapData =
           Buffer.from(content.substring(index + marker.length), 'base64').toString('utf8');
 
-      const decoder = new sourceMap.SourceMapConsumer(JSON.parse(sourceMapData));
+      const decoder = new sourceMap.SourceMapConsumer(JSON.parse(sourceMapData) as any);
 
       const originalPosition = decoder.originalPositionFor({line: errorLine, column: errorColumn});
 

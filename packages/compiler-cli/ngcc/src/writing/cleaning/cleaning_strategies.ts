@@ -30,7 +30,7 @@ export class PackageJsonCleaner implements CleaningStrategy {
     return basename === 'package.json';
   }
   clean(path: AbsoluteFsPath, _basename: PathSegment): void {
-    const packageJson = JSON.parse(this.fs.readFile(path));
+    const packageJson = JSON.parse(this.fs.readFile(path)) as any;
     if (cleanPackageJson(packageJson)) {
       this.fs.writeFile(path, `${JSON.stringify(packageJson, null, 2)}\n`);
     }

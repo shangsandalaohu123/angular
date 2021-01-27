@@ -46,7 +46,7 @@ export class SimpleJsonTranslationParser implements TranslationParser<Object> {
       return {canParse: false, diagnostics};
     }
     try {
-      const json = JSON.parse(contents);
+      const json = JSON.parse(contents) as any;
       if (json.locale === undefined) {
         diagnostics.warn('Required "locale" property missing.');
         return {canParse: false, diagnostics};
@@ -71,7 +71,7 @@ export class SimpleJsonTranslationParser implements TranslationParser<Object> {
   }
 
   parse(_filePath: string, contents: string, json?: Object): ParsedTranslationBundle {
-    const {locale: parsedLocale, translations} = json || JSON.parse(contents);
+    const {locale: parsedLocale, translations} = json || JSON.parse(contents) as any;
     const parsedTranslations: Record<ɵMessageId, ɵParsedTranslation> = {};
     for (const messageId in translations) {
       const targetMessage = translations[messageId];

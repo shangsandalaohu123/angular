@@ -555,7 +555,7 @@ runInEachFileSystem(() => {
 
              // Add a build marker to the package.json
              const packageJsonPath = _Abs(`${targetPath}/package.json`);
-             const packageJson = JSON.parse(fs.readFile(packageJsonPath));
+             const packageJson = JSON.parse(fs.readFile(packageJsonPath)) as any;
              packageJson.__processed_by_ivy_ngcc__ = {
                esm5: NGCC_VERSION,
              };
@@ -579,7 +579,7 @@ runInEachFileSystem(() => {
 
           // Add build markers to the package.json
           const packageJsonPath = _Abs(`${targetPath}/package.json`);
-          const packageJson = JSON.parse(fs.readFile(packageJsonPath));
+          const packageJson = JSON.parse(fs.readFile(packageJsonPath)) as any;
           packageJson.__processed_by_ivy_ngcc__ = {
             fesm2015: NGCC_VERSION,
             esm5: NGCC_VERSION,
@@ -625,7 +625,7 @@ runInEachFileSystem(() => {
 
              // Add build markers to the package.json
              const packageJsonPath = _Abs(`${targetPath}/package.json`);
-             const packageJson = JSON.parse(fs.readFile(packageJsonPath));
+             const packageJson = JSON.parse(fs.readFile(packageJsonPath)) as any;
              packageJson.__processed_by_ivy_ngcc__ = {
                esm5: NGCC_VERSION,
              };
@@ -651,7 +651,7 @@ runInEachFileSystem(() => {
 
              // Add build markers to the package.json
              const packageJsonPath = _Abs(`${targetPath}/package.json`);
-             const packageJson = JSON.parse(fs.readFile(packageJsonPath));
+             const packageJson = JSON.parse(fs.readFile(packageJsonPath)) as any;
              packageJson.__processed_by_ivy_ngcc__ = {
                fesm2015: NGCC_VERSION,
              };

@@ -58,7 +58,7 @@ describe('Elements Schematics', () => {
     const tree =
         await schematicRunner.runSchematicAsync('ng-add', defaultOptions, appTree).toPromise();
     const pkgJsonText = tree.readContent('/package.json');
-    const pkgJson = JSON.parse(pkgJsonText);
+    const pkgJson = JSON.parse(pkgJsonText) as any;
     const {dependencies} = pkgJson;
     expect(dependencies['document-register-element']).toBeDefined();
   });

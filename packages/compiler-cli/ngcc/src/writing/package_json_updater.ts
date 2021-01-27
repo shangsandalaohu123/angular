@@ -131,7 +131,7 @@ export class DirectPackageJsonUpdater implements PackageJsonUpdater {
     // NOTE: We are not using `preExistingParsedJson` (even if specified) to avoid corrupting the
     //       content on disk in case `preExistingParsedJson` is outdated.
     const parsedJson =
-        this.fs.exists(packageJsonPath) ? JSON.parse(this.fs.readFile(packageJsonPath)) : {};
+        this.fs.exists(packageJsonPath) ? JSON.parse(this.fs.readFile(packageJsonPath)) as any : {};
 
     // Apply all changes to both the canonical representation (read from disk) and any pre-existing,
     // in-memory representation.

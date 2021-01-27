@@ -57,7 +57,7 @@ export function* getComplianceTests(testConfigPath: string): Generator<Complianc
 function loadTestCasesFile(
     fs: ReadonlyFileSystem, testCasesPath: AbsoluteFsPath, basePath: AbsoluteFsPath): any {
   try {
-    return JSON.parse(fs.readFile(testCasesPath));
+    return JSON.parse(fs.readFile(testCasesPath)) as any;
   } catch (e) {
     throw new Error(
         `Failed to load test-cases at "${fs.relative(basePath, testCasesPath)}":\n ${e.message}`);

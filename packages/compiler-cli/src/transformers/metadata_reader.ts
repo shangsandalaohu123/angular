@@ -70,7 +70,7 @@ function readMetadataFile(host: MetadataReaderHost, dtsFilePath: string): Module
     return undefined;
   }
   try {
-    const metadataOrMetadatas = JSON.parse(host.readFile(metadataPath));
+    const metadataOrMetadatas = JSON.parse(host.readFile(metadataPath)) as any;
     const metadatas: ModuleMetadata[] = metadataOrMetadatas ?
         (Array.isArray(metadataOrMetadatas) ? metadataOrMetadatas : [metadataOrMetadatas]) :
         [];

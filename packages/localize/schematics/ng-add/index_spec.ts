@@ -177,9 +177,9 @@ export { renderModule, renderModuleFactory } from '@angular/platform-server';`;
   it('should add package to `devDependencies` by default', async () => {
     host = await schematicRunner.runSchematicAsync('ng-add', defaultOptions, host).toPromise();
     const packageJsonText = host.readContent('/package.json');
-    expect(JSON.parse(packageJsonText).devDependencies?.['@angular/localize'])
+    expect((JSON.parse(packageJsonText) as any).devDependencies?.['@angular/localize'])
         .toBe('~0.0.0-PLACEHOLDER');
-    expect(JSON.parse(packageJsonText).dependencies?.['@angular/localize']).toBeUndefined();
+    expect((JSON.parse(packageJsonText) as any).dependencies?.['@angular/localize']).toBeUndefined();
   });
 
   it('should add package to `dependencies` if `useAtRuntime` is `true`', async () => {
@@ -187,8 +187,8 @@ export { renderModule, renderModuleFactory } from '@angular/platform-server';`;
                .runSchematicAsync('ng-add', {...defaultOptions, useAtRuntime: true}, host)
                .toPromise();
     const packageJsonText = host.readContent('/package.json');
-    expect(JSON.parse(packageJsonText).dependencies?.['@angular/localize'])
+    expect((JSON.parse(packageJsonText) as any).dependencies?.['@angular/localize'])
         .toBe('~0.0.0-PLACEHOLDER');
-    expect(JSON.parse(packageJsonText).devDependencies?.['@angular/localize']).toBeUndefined();
+    expect((JSON.parse(packageJsonText) as any).devDependencies?.['@angular/localize']).toBeUndefined();
   });
 });

@@ -184,7 +184,7 @@ runInEachFileSystem(() => {
            }];
            fileWriter.writeBundle(esm2015bundle, modifiedFiles, ['es2015']);
 
-           expect(JSON.parse(fs.readFile(_('/node_modules/test/__ivy_ngcc__/es2015/index.js.map'))))
+           expect(JSON.parse(fs.readFile(_('/node_modules/test/__ivy_ngcc__/es2015/index.js.map'))) as any)
                .toEqual({...sourceMap, sourceRoot: '../../es2015'});
          });
 
@@ -213,7 +213,7 @@ runInEachFileSystem(() => {
            }];
            fileWriter.writeBundle(esm2015bundle, modifiedFiles, ['es2015']);
 
-           expect(JSON.parse(fs.readFile(_('/node_modules/test/__ivy_ngcc__/es2015/index.js.map'))))
+           expect(JSON.parse(fs.readFile(_('/node_modules/test/__ivy_ngcc__/es2015/index.js.map'))) as any)
                .toEqual({...sourceMap, sourceRoot: '../../src'});
          });
 
@@ -678,7 +678,7 @@ runInEachFileSystem(() => {
               },
             ],
             ['fesm5', 'module']);
-        const packageJsonFromFile1 = JSON.parse(fs.readFile(packageJsonPath));
+        const packageJsonFromFile1 = JSON.parse(fs.readFile(packageJsonPath)) as any;
 
         expect(entryPoint.packageJson).toEqual(jasmine.objectContaining({
           fesm5_ivy_ngcc: '__ivy_ngcc__/esm5.js',
@@ -698,7 +698,7 @@ runInEachFileSystem(() => {
             esm5bundle.entryPoint,
             [_('/node_modules/test/index.d.ts'), _('/node_modules/test/index.d.ts.map')],
             ['fesm5', 'module']);
-        const packageJsonFromFile2 = JSON.parse(fs.readFile(packageJsonPath));
+        const packageJsonFromFile2 = JSON.parse(fs.readFile(packageJsonPath)) as any;
 
         expect(entryPoint.packageJson).toEqual(jasmine.objectContaining({
           fesm5: './esm5.js',

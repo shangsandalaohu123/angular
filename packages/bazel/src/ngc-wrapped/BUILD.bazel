@@ -9,13 +9,13 @@ ts_library(
         "index.ts",
     ],
     module_name = "@angular/bazel",
-    node_modules = "@npm//typescript:typescript__typings",
     tsconfig = ":tsconfig.json",
     visibility = [
         "//packages/bazel:__pkg__",
         "//packages/bazel/test/ngc-wrapped:__subpackages__",
     ],
     deps = [
+        "@npm//typescript:typescript__typings",
         "//packages/compiler-cli",
         "@npm//@bazel/typescript",
         "@npm//@types/node",
@@ -33,6 +33,7 @@ nodejs_binary(
         "@npm//source-map-support",
         "@npm//tslib",
     ],
+    templated_args = ["--bazel_patch_module_resolver"],
     entry_point = ":index.ts",
     visibility = ["//visibility:public"],
 )
@@ -43,6 +44,7 @@ nodejs_binary(
         ":ngc_lib",
         "@npm//source-map-support",
     ],
+    templated_args = ["--bazel_patch_module_resolver"],
     entry_point = ":extract_i18n.ts",
     visibility = ["//visibility:public"],
 )

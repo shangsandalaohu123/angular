@@ -18,7 +18,7 @@ runInEachFileSystem(() => {
     let updater: PackageJsonUpdater;
 
     // Helpers
-    const readJson = (path: AbsoluteFsPath) => JSON.parse(fs.readFile(path));
+    const readJson = (path: AbsoluteFsPath) => JSON.parse(fs.readFile(path)) as any;
 
     beforeEach(() => {
       _ = absoluteFrom;

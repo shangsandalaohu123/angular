@@ -233,7 +233,7 @@ runInEachFileSystem(() => {
          ]);
          const config = new NgccConfiguration(fs, _('/project'));
          const override =
-             JSON.parse(createPackageJson('missing_package_json', {excludes: ['name']}));
+             JSON.parse(createPackageJson('missing_package_json', {excludes: ['name']}))as any;
          spyOn(config, 'getPackageConfig')
              .and.returnValue(new ProcessedNgccPackageConfig(
                  fs, _('/project/node_modules/some_package/'),
@@ -782,5 +782,5 @@ export function createPackageJson(
 }
 
 export function loadPackageJson(fs: ReadonlyFileSystem, packagePath: string) {
-  return JSON.parse(fs.readFile(fs.resolve(packagePath + '/package.json')));
+  return JSON.parse(fs.readFile(fs.resolve(packagePath + '/package.json'))) as any;
 }

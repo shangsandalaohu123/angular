@@ -35,7 +35,7 @@ export async function getVersionOfBranch(
     repo: GithubRepoWithApi, branchName: string): Promise<semver.SemVer> {
   const {data} = await repo.api.repos.getContents(
       {owner: repo.owner, repo: repo.name, path: '/package.json', ref: branchName});
-  const {version} = JSON.parse(Buffer.from(data.content, 'base64').toString());
+  const {version} = JSON.parse(Buffer.from(data.content, 'base64').toString()) as {version: string};
   const parsedVersion = semver.parse(version);
   if (parsedVersion === null) {
     throw Error(`Invalid version detected in following branch: ${branchName}.`);
